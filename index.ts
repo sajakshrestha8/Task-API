@@ -1,11 +1,24 @@
 import express from "express";
 import { Request, Response } from "express";
-const app = express();
-const Port = 8000;
-const tasks = ["I am working", "I am sleeping", "I am eating"];
+import sequelize from "./database";
 
-app.get("/tasks", (req: Request, res: Response) => {
-    res.send(tasks);
+const app = express();
+const Port = 8001;
+
+//db connection 
+async function databaseConnection() {
+    try {
+        await sequelize.authenticate();
+        console.log("Database connected successfully");
+    } catch (error) {
+        console.log("Database failed to build the connection", error)
+    }
+}
+
+databaseConnection();
+
+//route for adding the task
+app.post('/tasks', (req: Request, res: Response) => {
 })
 
 app.listen(Port, () => {
