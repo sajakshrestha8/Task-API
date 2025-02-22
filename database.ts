@@ -10,9 +10,9 @@ const sequelize = new Sequelize("Task-Api", "SajakShrestha", "sajakPass", {
     logging: false
 })
 
-const Task = sequelize.define("Tasks", {
+const Task = sequelize.define("Task", {
     id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
@@ -25,4 +25,4 @@ const Task = sequelize.define("Tasks", {
     }
 })
 
-export default sequelize;
+export { sequelize, Task };
