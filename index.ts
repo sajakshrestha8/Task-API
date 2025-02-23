@@ -5,22 +5,12 @@ import { where } from "sequelize";
 
 const app = express();
 const Port = 8001;
+const fs = require('fs');
 
 //middleware
 app.use(express.json());
 
-//db connection 
-async function databaseConnection() {
-    try {
-        await sequelize.authenticate();
-        await sequelize.sync();
-        console.log("Database connected successfully");
-    } catch (error) {
-        console.log("Database failed to build the connection", error)
-    }
-}
-
-databaseConnection();
+//create a new file
 
 //route for getting all task 
 app.get('/tasks', async(req: Request, res: Response) => {
